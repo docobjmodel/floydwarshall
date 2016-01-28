@@ -61,11 +61,11 @@ http://www.mif.vu.lt/~valdas/ALGORITMAI/LITERATURA/Cormen/Cormen.pdf
 
 FLOYD-WARSHALL (W)
 1 n <- rows[W]
-2 D <- W
+2 D(0) <- W
 3 for k <- 1 to n
 4 do for i <- 1 to n
 5 do for j <- 1 to n
-6 do dij <- min (dij, dik + dkj)
+6 do d(k)ij <- min (d(k-1)ij, d(k-1)ik + d(k-1)kj)
 7 return D
 Exercises 25.2-5
 
