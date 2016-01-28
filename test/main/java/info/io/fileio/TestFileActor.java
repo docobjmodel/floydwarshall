@@ -43,7 +43,7 @@ public class TestFileActor {
 	}
 
 	/**
-	 * tests validity of the input file's address
+	 * tests validity of the input file's address and reading of the content
 	 */
 	@Test(groups = { "fileio", "configuration", "common" })
 	public void testInputData() {
