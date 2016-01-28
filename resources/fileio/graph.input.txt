@@ -12,7 +12,7 @@
 #   v     v v    |
 #  7  --> 8  --> 9
 
-# let use minus charcter instead
+# let use minus character instead
 #   of the infinity character
 # to denote the absent routes 
 
