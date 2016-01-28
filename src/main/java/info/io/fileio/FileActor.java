@@ -33,22 +33,18 @@ public class FileActor {
 			graph = new Hashtable<String, List<Integer>>();
 			Properties props = new Properties();
 			props.load(new FileInputStream(inputLocation.getAddress()));
-			Set<Object> keys = props.keySet();
+			Set<String> stations = props.stringPropertyNames();
 			String comma = ",";
-			String line;
-			String station;
-			List<Integer> weights;
 			Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
-			for (Object key : keys) {
-				station = (String) key;
-				weights = new ArrayList<Integer>();
-				line = props.getProperty(station);
+			stations.forEach(station -> {
+				List<Integer> weights = new ArrayList<Integer>();
+				String line = props.getProperty(station);
 				String[] routes = line.split(comma);
 				for (String route : routes) {
 					weights.add(route.equals("-") ? integerMaxValue : Integer.valueOf(route));
 				}
 				graph.put(station, weights);
-			}
+			});
 		} catch (NumberFormatException | IOException e) {
 			e.printStackTrace();
 		}
