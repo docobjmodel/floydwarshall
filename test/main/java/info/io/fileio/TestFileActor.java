@@ -51,9 +51,9 @@ public class TestFileActor {
 		String space = " ";
 		Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
 		FileActor fileActor = new FileActor(inputAddress);
-		Map<String, List<Integer>> graph = fileActor.getGraph();
+		Map<Integer, List<Integer>> graph = fileActor.getGraph();
 		graph.keySet().forEach(station -> {
-			System.out.print(station.concat(gap));
+			System.out.print(station.toString().concat(gap));
 			graph.get(station).forEach(
 					route -> System.out.print((route.equals(integerMaxValue) ? "-" : route).toString().concat(space)));
 			System.out.println();

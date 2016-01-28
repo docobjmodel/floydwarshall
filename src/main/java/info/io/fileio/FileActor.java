@@ -22,7 +22,7 @@ public class FileActor {
 	/**
 	 * adjacency matrix of the directed graph - graph edges
 	 */
-	private Map<String, List<Integer>> graph;
+	private Map<Integer, List<Integer>> graph;
 
 	/**
 	 * @param inputLocation
@@ -30,20 +30,23 @@ public class FileActor {
 	 */
 	public FileActor(AddressBean inputLocation) {
 		try {
-			graph = new Hashtable<String, List<Integer>>();
+			graph = new Hashtable<Integer, List<Integer>>();
 			Properties props = new Properties();
 			props.load(new FileInputStream(inputLocation.getAddress()));
-			Set<String> stations = props.stringPropertyNames();
+			Set<Object> keys = props.keySet();
+			List<Integer> vertices = new ArrayList<Integer>();
+			keys.forEach(key -> vertices.add(Integer.valueOf((String) key)));
+
 			String comma = ",";
 			Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
-			stations.forEach(station -> {
+			vertices.forEach(vertex -> {
 				List<Integer> weights = new ArrayList<Integer>();
-				String line = props.getProperty(station);
+				String line = props.getProperty(vertex.toString());
 				String[] routes = line.split(comma);
 				for (String route : routes) {
 					weights.add(route.equals("-") ? integerMaxValue : Integer.valueOf(route));
 				}
-				graph.put(station, weights);
+				graph.put(vertex, weights);
 			});
 		} catch (NumberFormatException | IOException e) {
 			e.printStackTrace();
@@ -57,7 +60,7 @@ public class FileActor {
 	 *         stations, and values are ordered lists of route weights for each
 	 *         station respectively other stations, route for itself is zero.
 	 */
-	public Map<String, List<Integer>> getGraph() {
+	public Map<Integer, List<Integer>> getGraph() {
 		return graph;
 	}
 }
