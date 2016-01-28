@@ -67,4 +67,5 @@ jar {
 task runApp(type: JavaExec) {
   classpath = sourceSets.main.runtimeClasspath
   main = 'info.commuter.CommuterApp'
+  args 'arg0','arg1','arg2'
 }
