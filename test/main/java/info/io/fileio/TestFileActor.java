@@ -47,13 +47,12 @@ public class TestFileActor {
 	 */
 	@Test(groups = { "fileio", "configuration", "common" })
 	public void testInputData() {
+		String gap = " : ";
 		String space = " ";
-		String tab = "\t";
 		FileActor fileActor = new FileActor(inputAddress);
 		Map<String, List<Integer>> graph = fileActor.getGraph();
 		graph.keySet().forEach(station -> {
-			System.out.print(station.concat(space));
-			System.out.print(tab);
+			System.out.print(station.concat(gap));
 			graph.get(station).forEach(route -> System.out.print(route.toString().concat(space)));
 			System.out.println();
 		});
