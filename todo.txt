@@ -59,6 +59,8 @@ Thomas H. Cormen Charles E. Leiserson Ronald L. Rivest Clifford Stein The MIT Pr
 Ch. 25 "Chapter 25: All-Pairs Shortest Paths"
 http://www.mif.vu.lt/~valdas/ALGORITMAI/LITERATURA/Cormen/Cormen.pdf
 
+https://en.wikipedia.org/wiki/Floyd-Warshall_algorithm
+
 FLOYD-WARSHALL (W)
 1 n <- rows[W]
 2 D(0) <- W
