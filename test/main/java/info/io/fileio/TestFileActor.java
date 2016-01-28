@@ -43,7 +43,7 @@ public class TestFileActor {
 	}
 
 	/**
-	 * tests validity of the input file's {@link java.net.URL URL}
+	 * tests validity of the input file's address
 	 */
 	@Test(groups = { "fileio", "configuration", "common" })
 	public void testInputData() {
