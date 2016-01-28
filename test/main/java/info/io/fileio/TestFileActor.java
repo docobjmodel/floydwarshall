@@ -53,7 +53,8 @@ public class TestFileActor {
 		Map<String, List<Integer>> graph = fileActor.getGraph();
 		graph.keySet().forEach(station -> {
 			System.out.print(station.concat(gap));
-			graph.get(station).forEach(route -> System.out.print(route.toString().concat(space)));
+			graph.get(station).forEach(route -> System.out
+					.print((route.equals(Integer.MAX_VALUE) ? "-" : route).toString().concat(space)));
 			System.out.println();
 		});
 	}

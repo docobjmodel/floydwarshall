@@ -44,7 +44,11 @@ public class FileActor {
 				line = props.getProperty(station);
 				String[] routes = line.split(comma);
 				for (String route : routes) {
-					weights.add(Integer.valueOf(route));
+					try {
+						weights.add(Integer.valueOf(route));
+					} catch (NumberFormatException e) {
+						weights.add(Integer.MAX_VALUE);
+					}
 				}
 				graph.put(station, weights);
 			}
