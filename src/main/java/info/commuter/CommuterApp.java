@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import info.algorithm.FloydWarschall;
 import info.commuter.configuration.AddressBean;
 import info.commuter.configuration.CommuterFileConfig;
 import info.io.fileio.FileActor;
@@ -25,8 +26,19 @@ public class CommuterApp {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
 		ctx.register(CommuterFileConfig.class);
 		ctx.refresh();
-		Map<String, List<Integer>> graph = (new FileActor((AddressBean) ctx.getBean("inputAddress"))).getGraph();
 		// Floyd-Warshall algorithm here
+		Map<Integer, List<Integer>> paths = (new FloydWarschall())
+				.getShortestPaths(new FileActor((AddressBean) ctx.getBean("inputAddress")).getGraph());
+		String space = " ";
+		String gap = " : ";
+		Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
+		System.out.println("-------- shortest paths presentation --------");
+		paths.keySet().forEach(station -> {
+			System.out.print(station.toString().concat(gap));
+			paths.get(station).forEach(
+					route -> System.out.print((route.equals(integerMaxValue) ? "-" : route).toString().concat(space)));
+			System.out.println();
+		});
 		//
 		ctx.close();
 	}
