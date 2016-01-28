@@ -50,8 +50,7 @@ public class TestFileActor {
 		String gap = " : ";
 		String space = " ";
 		Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
-		FileActor fileActor = new FileActor(inputAddress);
-		Map<Integer, List<Integer>> graph = fileActor.getGraph();
+		Map<Integer, List<Integer>> graph = new FileActor(inputAddress).getGraph();
 		graph.keySet().forEach(station -> {
 			System.out.print(station.toString().concat(gap));
 			graph.get(station).forEach(
