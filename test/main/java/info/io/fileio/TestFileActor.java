@@ -49,12 +49,13 @@ public class TestFileActor {
 	public void testInputData() {
 		String gap = " : ";
 		String space = " ";
+		Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
 		FileActor fileActor = new FileActor(inputAddress);
 		Map<String, List<Integer>> graph = fileActor.getGraph();
 		graph.keySet().forEach(station -> {
 			System.out.print(station.concat(gap));
-			graph.get(station).forEach(route -> System.out
-					.print((route.equals(Integer.MAX_VALUE) ? "-" : route).toString().concat(space)));
+			graph.get(station).forEach(
+					route -> System.out.print((route.equals(integerMaxValue) ? "-" : route).toString().concat(space)));
 			System.out.println();
 		});
 	}

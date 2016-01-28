@@ -38,17 +38,14 @@ public class FileActor {
 			String line;
 			String station;
 			List<Integer> weights;
+			Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
 			for (Object key : keys) {
 				station = (String) key;
 				weights = new ArrayList<Integer>();
 				line = props.getProperty(station);
 				String[] routes = line.split(comma);
 				for (String route : routes) {
-					try {
-						weights.add(Integer.valueOf(route));
-					} catch (NumberFormatException e) {
-						weights.add(Integer.MAX_VALUE);
-					}
+					weights.add(route.equals("-") ? integerMaxValue : Integer.valueOf(route));
 				}
 				graph.put(station, weights);
 			}
