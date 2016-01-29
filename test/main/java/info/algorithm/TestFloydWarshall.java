@@ -54,7 +54,6 @@ public class TestFloydWarshall {
 				.getShortestPaths(new FileActor(inputAddress).getGraph());
 		String space = " ";
 		String gap = " : ";
-		Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
 		Set<Integer> keys = paths.keySet();
 		List<Integer> stations = new ArrayList<Integer>();
 		keys.forEach(stations::add);
@@ -62,8 +61,7 @@ public class TestFloydWarshall {
 		System.out.println("\ttest of Floyd-Warshall algorithm");
 		for (Integer station : stations) {
 			System.out.print(station.toString().concat(gap));
-			paths.get(station).forEach(
-					route -> System.out.print((route.equals(integerMaxValue) ? "-" : route).toString().concat(space)));
+			paths.get(station).forEach(route -> System.out.print(route.toString().concat(space)));
 			System.out.println();
 		}
 		System.out.println("-----------------------------------------------------");
