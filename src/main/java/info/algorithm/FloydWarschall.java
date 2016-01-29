@@ -57,7 +57,7 @@ public class FloydWarschall {
 					// dist[i][j] <- dist[i][k] + dist[k][j]
 					if (!dist[i][k].equals(integerMaxValue) && !dist[k][j].equals(integerMaxValue)) {
 						int sum = dist[i][k].intValue() + dist[k][j].intValue();
-						if (dist[i][j].intValue() > sum) {
+						if (dist[i][j].equals(integerMaxValue) || dist[i][j].intValue() > sum) {
 							dist[i][j] = Integer.valueOf(sum);
 						}
 					}
