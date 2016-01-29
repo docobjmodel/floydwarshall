@@ -40,10 +40,8 @@ public class FloydWarschall {
 			n = 0;
 			graph.get(station).forEach(route -> {
 				dist[m][n] = route;
-				System.out.print(dist[m][n].equals(Integer.MAX_VALUE) ? "-" : dist[m][n] + " ");
 				n++;
 			});
-			System.out.println();
 			m++;
 		});
 
@@ -59,7 +57,9 @@ public class FloydWarschall {
 					// dist[i][j] <- dist[i][k] + dist[k][j]
 					if (!dist[i][k].equals(integerMaxValue) && !dist[k][j].equals(integerMaxValue)) {
 						int sum = dist[i][k].intValue() + dist[k][j].intValue();
-						dist[i][j] = Integer.valueOf(Integer.min(dist[i][j].intValue(), sum));
+						if (dist[i][j].intValue() > sum) {
+							dist[i][j] = Integer.valueOf(sum);
+						}
 					}
 				}
 			}
