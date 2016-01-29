@@ -34,16 +34,19 @@ public class FileActor {
 			Properties props = new Properties();
 			props.load(new FileInputStream(inputLocation.getAddress()));
 			Set<Object> keys = props.keySet();
+			List<Integer> vertices = new ArrayList<Integer>();
+			keys.forEach(vertex -> vertices.add(Integer.valueOf((String)vertex)));
+			vertices.sort((v1, v2) -> v1.compareTo(v2));
 			String comma = ",";
 			Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
-			keys.forEach(vertex -> {
+			vertices.forEach(vertex -> {
 				List<Integer> weights = new ArrayList<Integer>();
-				String line = props.getProperty((String) vertex);
+				String line = props.getProperty(vertex.toString());
 				String[] routes = line.split(comma);
 				for (String route : routes) {
 					weights.add(route.equals("-") ? integerMaxValue : Integer.valueOf(route));
 				}
-				graph.put(Integer.valueOf((String) vertex), weights);
+				graph.put(vertex, weights);
 			});
 		} catch (NumberFormatException | IOException e) {
 			e.printStackTrace();
