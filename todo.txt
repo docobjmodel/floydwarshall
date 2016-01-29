@@ -70,7 +70,3 @@ FLOYD-WARSHALL (W)
 6 do d(k)ij <- min (d(k-1)ij, d(k-1)ik + d(k-1)kj)
 7 return D
 Exercises 25.2-5
-
-gradle wrapper --gradle-version 2.10
-gradlew runApp
-gradlew jar
