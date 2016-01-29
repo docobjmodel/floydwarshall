@@ -20,7 +20,8 @@ import info.commuter.configuration.AddressBean;
  */
 public class FileActor {
 	/**
-	 * adjacency matrix of the directed graph - graph edges
+	 * adjacency matrix of the directed graph - graph edges, keys are numbered
+	 * stations
 	 */
 	private Map<Integer, List<Integer>> graph;
 
