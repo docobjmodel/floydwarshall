@@ -3,8 +3,10 @@
  */
 package info.algorithm;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.annotations.AfterClass;
@@ -53,11 +55,17 @@ public class TestFloydWarshall {
 		String space = " ";
 		String gap = " : ";
 		Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
-		paths.keySet().forEach(station -> {
+		Set<Integer> keys = paths.keySet();
+		List<Integer> stations = new ArrayList<Integer>();
+		keys.forEach(stations::add);
+		stations.sort((st1, st2) -> st1.compareTo(st2));
+		System.out.println("\ttest of Floyd-Warshall algorithm");
+		for (Integer station : stations) {
 			System.out.print(station.toString().concat(gap));
 			paths.get(station).forEach(
 					route -> System.out.print((route.equals(integerMaxValue) ? "-" : route).toString().concat(space)));
 			System.out.println();
-		});
+		}
+		System.out.println("-----------------------------------------------------");
 	}
 }

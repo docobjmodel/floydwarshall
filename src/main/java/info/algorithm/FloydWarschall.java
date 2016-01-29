@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author fukubaru
@@ -32,18 +33,21 @@ public class FloydWarschall {
 	public Map<Integer, List<Integer>> getShortestPaths(Map<Integer, List<Integer>> graph) {
 		// n <- rows[W]
 		int size = graph.size();
-
 		Integer[][] dist = new Integer[size][size];
 		// prepare the initial matrix copy of the graph D <- W
+		Set<Integer> keys = graph.keySet();
+		List<Integer> stations = new ArrayList<Integer>();
+		keys.forEach(stations::add);
+		stations.sort((st1, st2) -> st1.compareTo(st2));
 		m = 0;
-		graph.keySet().forEach(station -> {
+		for (Integer station : stations) {
 			n = 0;
 			graph.get(station).forEach(route -> {
 				dist[m][n] = route;
 				n++;
 			});
 			m++;
-		});
+		}
 
 		// algorithm itself
 		// for k <- 1 to n
@@ -68,14 +72,14 @@ public class FloydWarschall {
 		// copy the values to result Map
 		m = 0;
 		Map<Integer, List<Integer>> paths = new Hashtable<Integer, List<Integer>>();
-		graph.keySet().forEach(station -> {
+		for (Integer station : stations) {
 			List<Integer> routes = new ArrayList<Integer>();
 			for (n = 0; n < size; n++) {
 				routes.add(dist[m][n]);
 			}
 			paths.put(station, routes);
 			m++;
-		});
+		}
 		return paths;
 	}
 }
