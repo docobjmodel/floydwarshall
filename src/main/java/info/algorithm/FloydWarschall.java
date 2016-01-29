@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author fukubaru
@@ -35,9 +34,8 @@ public class FloydWarschall {
 		int size = graph.size();
 		Integer[][] dist = new Integer[size][size];
 		// prepare the initial matrix copy of the graph D <- W
-		Set<Integer> keys = graph.keySet();
 		List<Integer> stations = new ArrayList<Integer>();
-		keys.forEach(stations::add);
+		graph.keySet().forEach(stations::add);
 		stations.sort((st1, st2) -> st1.compareTo(st2));
 		m = 0;
 		for (Integer station : stations) {

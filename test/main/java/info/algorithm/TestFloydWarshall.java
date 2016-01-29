@@ -6,7 +6,6 @@ package info.algorithm;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.annotations.AfterClass;
@@ -54,9 +53,8 @@ public class TestFloydWarshall {
 				.getShortestPaths(new FileActor(inputAddress).getGraph());
 		String space = " ";
 		String gap = " : ";
-		Set<Integer> keys = paths.keySet();
 		List<Integer> stations = new ArrayList<Integer>();
-		keys.forEach(stations::add);
+		paths.keySet().forEach(stations::add);
 		stations.sort((st1, st2) -> st1.compareTo(st2));
 		System.out.println("\ttest of Floyd-Warshall algorithm");
 		for (Integer station : stations) {
