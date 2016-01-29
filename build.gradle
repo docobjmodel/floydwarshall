@@ -53,7 +53,6 @@ task wrapper(type: Wrapper) {
 test {
   // enable TestNG support
   useTestNG()
-
   include '**/*Test*.*'
 }
 
