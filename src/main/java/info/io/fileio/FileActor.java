@@ -36,7 +36,6 @@ public class FileActor {
 			Set<Object> keys = props.keySet();
 			List<Integer> vertices = new ArrayList<Integer>();
 			keys.forEach(vertex -> vertices.add(Integer.valueOf(vertex.toString())));
-			vertices.sort((v1, v2) -> v1.compareTo(v2));
 			String comma = ",";
 			Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
 			vertices.forEach(vertex -> {
