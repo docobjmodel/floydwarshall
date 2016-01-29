@@ -53,13 +53,15 @@ public class TestFloydWarshall {
 				.getShortestPaths(new FileActor(inputAddress).getGraph());
 		String space = " ";
 		String gap = " : ";
+		Integer integerMaxValue = Integer.valueOf(Integer.MAX_VALUE);
 		List<Integer> stations = new ArrayList<Integer>();
 		paths.keySet().forEach(stations::add);
 		stations.sort((st1, st2) -> st1.compareTo(st2));
 		System.out.println("\ttest of Floyd-Warshall algorithm");
 		for (Integer station : stations) {
 			System.out.print(station.toString().concat(gap));
-			paths.get(station).forEach(route -> System.out.print(route.toString().concat(space)));
+			paths.get(station).forEach(
+					route -> System.out.print((route.equals(integerMaxValue) ? "-" : route).toString().concat(space)));
 			System.out.println();
 		}
 		System.out.println("-----------------------------------------------------");
